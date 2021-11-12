@@ -5,16 +5,30 @@
 int choixSymbole(int); //choix du symbole pour chaque joueur identifié par un entier renvoir le symbole sous forme entier
 void comparerSymboles(int,int);
 
-
+/********************variable globales**************/
+enum symboles {PIERRE=1,FEUILLE=2,CISEAU=3};
 
 int main() {
-    printf("%d",choixSymbole(1)); //test unitaire de choixSymbole
+
+    comparerSymboles(choixSymbole(2), choixSymbole(1));
     return 0;
 }
 
 /******************définitions*********************/
-void comparerSymboles(int symbolej1, int symbolej2) {
-
+void comparerSymboles(int symbolej2, int symbolej1) {
+if((symbolej1==PIERRE&&symbolej2==CISEAU)||(symbolej1==CISEAU&&symbolej2==FEUILLE)||(symbolej1==FEUILLE&&symbolej2==PIERRE))
+{
+    printf("Le joueur1 gagne\n");
+}
+else
+    if((symbolej1==PIERRE&&symbolej2==FEUILLE)||(symbolej1==CISEAU&&symbolej2==PIERRE)||(symbolej1==FEUILLE&&symbolej2==CISEAU))
+    {
+        printf("Le joueur2 gagne\n");
+    }
+    else
+    {
+        printf("Egalité\n");
+    }
 }
 
 int choixSymbole(int numerojoueur) {
